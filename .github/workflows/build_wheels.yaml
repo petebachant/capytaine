@@ -21,8 +21,9 @@ jobs:
         uses: pypa/cibuildwheel@v3.2.0
         env:
           CIBW_SKIP: "*musllinux* cp314t*"
-          # 2.3.1's tests predate pytest 9, fixed upstream in #980
-          CIBW_TEST_REQUIRES: "pytest<9"
+          # 2.3.1 predates pytest 9 (its tests, fixed upstream in #980) and
+          # numpy 2.4 (which no longer converts 1-element arrays to scalars)
+          CIBW_TEST_REQUIRES: "pytest<9 numpy<2.4"
 
       - uses: actions/upload-artifact@v4
         with:

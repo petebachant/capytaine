@@ -4,6 +4,9 @@ name: Build wheels
 # with libquadmath linked only on Windows so the build works there
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - v2.3.1-aarch64-wheels
 
 jobs:
   "build_wheels_on_ubuntu_arm":
